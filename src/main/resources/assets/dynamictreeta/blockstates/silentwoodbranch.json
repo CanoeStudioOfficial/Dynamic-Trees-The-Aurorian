@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "dynamictreeta:silentwoodbranch" }
+        "normal": { "model": "dynamictreeta:silentwoodbranch#dynamictree" }
     }
 }

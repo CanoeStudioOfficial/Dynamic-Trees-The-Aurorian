@@ -1,6 +1,7 @@
 {
-    "parent": "item/generated",
+    "parent": "dynamictrees:item/branch",
     "textures": {
-        "layer0": "dynamictreeta:items/weepingwillowseed"
+        "bark": "theaurorian:blocks/weepingwillowlogside",
+        "rings": "theaurorian:blocks/weepingwillowlogtop"
     }
 }

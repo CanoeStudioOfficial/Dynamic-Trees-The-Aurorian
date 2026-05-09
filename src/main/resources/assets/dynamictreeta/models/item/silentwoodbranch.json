@@ -1,6 +1,7 @@
 {
-    "parent": "item/generated",
+    "parent": "dynamictrees:item/branch",
     "textures": {
-        "layer0": "dynamictreeta:items/silentwoodseed"
+        "bark": "theaurorian:blocks/silentwoodlogside",
+        "rings": "theaurorian:blocks/silentwoodlogtop"
     }
 }
