@@ -22,6 +22,7 @@ import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class TreeWeepingWillow extends TreeFamily {
@@ -40,9 +41,9 @@ public class TreeWeepingWillow extends TreeFamily {
 
             setBasicGrowingParameters(0.2f, 12.0f, 2, 3, 0.7f);
 
-            envFactor(Type.COLD, 1.0f);
-            envFactor(Type.DRY, 1.0f);
-            envFactor(Type.MAGICAL, 1.2f);
+            envFactor(Type.COLD, 1.05f);
+            envFactor(Type.DRY, 0.75f);
+            envFactor(Type.MAGICAL, 1.1f);
             envFactor(Type.FOREST, 1.05f);
             envFactor(Type.WATER, 1.15f);
             envFactor(Type.SWAMP, 1.2f);
@@ -77,7 +78,7 @@ public class TreeWeepingWillow extends TreeFamily {
         public boolean generate(World world, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
             IBlockState soilBlockState = world.getBlockState(rootPos);
             if (soilBlockState.getBlock() == Blocks.WATER) {
-                if (radius >= 5) {
+                if (radius >= 4) {
                     return super.generate(world, rootPos.down(), biome, random, radius, safeBounds);
                 }
                 return false;
@@ -89,27 +90,18 @@ public class TreeWeepingWillow extends TreeFamily {
     public TreeWeepingWillow() {
         super(new ResourceLocation(DynamicTreesTA.MODID, "weepingwillow"));
 
-        if (logState != null) {
-            setPrimitiveLog(logState);
-        } else {
-            setPrimitiveLog(Blocks.LOG.getDefaultState());
-        }
+        setPrimitiveLog(logState);
 
         ModContent.weepingWillowLeavesProperties.setTree(this);
 
-        if (leavesBlock != null) {
-            addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
-        }
+        addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
     }
 
     @Override
     public ItemStack getPrimitiveLogItemStack(int qty) {
-        if (logBlock != null) {
-            ItemStack stack = new ItemStack(logBlock, 1, 0);
-            stack.setCount(MathHelper.clamp(qty, 0, 64));
-            return stack;
-        }
-        return new ItemStack(Blocks.LOG, qty, 0);
+        ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 1, 0);
+        stack.setCount(MathHelper.clamp(qty, 0, 64));
+        return stack;
     }
 
     @Override
