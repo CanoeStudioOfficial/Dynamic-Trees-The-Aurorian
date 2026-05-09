@@ -3,14 +3,14 @@
     "defaults": {
         "transform": "forge:default-block",
         "model": "leaves",
-        "textures": { "all": "blocks/leaves_oak" }
+        "textures": { "all": "theaurorian:blocks/weepingwillowleaves" }
     },
     "variants": {
         "tree": {
             "0": { "textures": { "all": "theaurorian:blocks/weepingwillowleaves" } },
-            "1": {},
-            "2": {},
-            "3": {}
+            "1": { "textures": { "all": "theaurorian:blocks/weepingwillowleaves" } },
+            "2": { "textures": { "all": "theaurorian:blocks/weepingwillowleaves" } },
+            "3": { "textures": { "all": "theaurorian:blocks/weepingwillowleaves" } }
         },
         "hydro": {
             "1": {},

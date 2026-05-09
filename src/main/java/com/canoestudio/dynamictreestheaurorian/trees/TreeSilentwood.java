@@ -1,12 +1,12 @@
 package com.canoestudio.dynamictreestheaurorian.trees;
 
-import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.canoestudio.dynamictreestheaurorian.ModContent;
 import com.canoestudio.dynamictreestheaurorian.DynamicTreesTA;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,6 +27,7 @@ public class TreeSilentwood extends TreeFamily {
     public static Block leavesBlock;
     public static Block logBlock;
     public static Block saplingBlock;
+    public static Item stickItem;
 
     public class SpeciesSilentwood extends Species {
 
@@ -35,9 +36,9 @@ public class TreeSilentwood extends TreeFamily {
 
             setBasicGrowingParameters(0.3f, 14.0f, 3, 5, 0.8f);
 
-            envFactor(Type.COLD, 1.05f);
-            envFactor(Type.DRY, 0.75f);
-            envFactor(Type.MAGICAL, 1.1f);
+            envFactor(Type.COLD, 1.0f);
+            envFactor(Type.DRY, 1.0f);
+            envFactor(Type.MAGICAL, 1.2f);
             envFactor(Type.FOREST, 1.05f);
 
             generateSeed();
@@ -53,22 +54,36 @@ public class TreeSilentwood extends TreeFamily {
     public TreeSilentwood() {
         super(new ResourceLocation(DynamicTreesTA.MODID, "silentwood"));
 
-        setPrimitiveLog(logState);
+        if (logState != null) {
+            setPrimitiveLog(logState);
+        } else {
+            setPrimitiveLog(Blocks.LOG.getDefaultState());
+        }
 
         ModContent.silentwoodLeavesProperties.setTree(this);
 
-        addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
+        if (leavesBlock != null) {
+            addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
+        }
     }
 
     @Override
     public ItemStack getPrimitiveLogItemStack(int qty) {
-        ItemStack stack = new ItemStack(Objects.requireNonNull(logBlock), 1, 0);
-        stack.setCount(MathHelper.clamp(qty, 0, 64));
-        return stack;
+        if (logBlock != null) {
+            ItemStack stack = new ItemStack(logBlock, 1, 0);
+            stack.setCount(MathHelper.clamp(qty, 0, 64));
+            return stack;
+        }
+        return new ItemStack(Blocks.LOG, qty, 0);
     }
 
     @Override
     public ItemStack getStick(int qty) {
+        if (stickItem != null) {
+            ItemStack stack = new ItemStack(stickItem, 1, 0);
+            stack.setCount(MathHelper.clamp(qty, 0, 64));
+            return stack;
+        }
         return new ItemStack(Items.STICK, qty);
     }
 

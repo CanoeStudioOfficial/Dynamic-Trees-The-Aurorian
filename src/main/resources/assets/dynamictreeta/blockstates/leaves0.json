@@ -3,14 +3,14 @@
     "defaults": {
         "transform": "forge:default-block",
         "model": "leaves",
-        "textures": { "all": "blocks/leaves_oak" }
+        "textures": { "all": "theaurorian:blocks/silentwoodleaves" }
     },
     "variants": {
         "tree": {
             "0": { "textures": { "all": "theaurorian:blocks/silentwoodleaves" } },
-            "1": {},
-            "2": {},
-            "3": {}
+            "1": { "textures": { "all": "theaurorian:blocks/silentwoodleaves" } },
+            "2": { "textures": { "all": "theaurorian:blocks/silentwoodleaves" } },
+            "3": { "textures": { "all": "theaurorian:blocks/silentwoodleaves" } }
         },
         "hydro": {
             "1": {},

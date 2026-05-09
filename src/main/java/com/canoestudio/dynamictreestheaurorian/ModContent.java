@@ -19,6 +19,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -67,10 +68,16 @@ public class ModContent {
         if (aurorianSilentwoodLeavesBlock != null) {
             TreeSilentwood.leavesBlock = aurorianSilentwoodLeavesBlock;
             TreeSilentwood.leavesState = aurorianSilentwoodLeavesBlock.getDefaultState();
+        } else {
+            TreeSilentwood.leavesBlock = Blocks.LEAVES;
+            TreeSilentwood.leavesState = Blocks.LEAVES.getDefaultState();
         }
         if (aurorianSilentwoodLogBlock != null) {
             TreeSilentwood.logBlock = aurorianSilentwoodLogBlock;
             TreeSilentwood.logState = aurorianSilentwoodLogBlock.getDefaultState();
+        } else {
+            TreeSilentwood.logBlock = Blocks.LOG;
+            TreeSilentwood.logState = Blocks.LOG.getDefaultState();
         }
         if (aurorianSilentwoodSaplingBlock != null) {
             TreeSilentwood.saplingBlock = aurorianSilentwoodSaplingBlock;
@@ -78,16 +85,27 @@ public class ModContent {
         if (aurorianWeepingWillowLeavesBlock != null) {
             TreeWeepingWillow.leavesBlock = aurorianWeepingWillowLeavesBlock;
             TreeWeepingWillow.leavesState = aurorianWeepingWillowLeavesBlock.getDefaultState();
+        } else {
+            TreeWeepingWillow.leavesBlock = Blocks.LEAVES;
+            TreeWeepingWillow.leavesState = Blocks.LEAVES.getDefaultState();
         }
         if (aurorianWeepingWillowLogBlock != null) {
             TreeWeepingWillow.logBlock = aurorianWeepingWillowLogBlock;
             TreeWeepingWillow.logState = aurorianWeepingWillowLogBlock.getDefaultState();
+        } else {
+            TreeWeepingWillow.logBlock = Blocks.LOG;
+            TreeWeepingWillow.logState = Blocks.LOG.getDefaultState();
         }
         if (aurorianWeepingWillowSaplingBlock != null) {
             TreeWeepingWillow.saplingBlock = aurorianWeepingWillowSaplingBlock;
         }
         if (aurorianGrassLightBlock != null) {
             TreeWeepingWillow.aurorianGrassLightBlock = aurorianGrassLightBlock;
+        }
+
+        Item silentwoodStickItem = Item.getByNameOrId("theaurorian:silentwoodstick");
+        if (silentwoodStickItem != null) {
+            TreeSilentwood.stickItem = silentwoodStickItem;
         }
 
         silentwoodLeavesProperties = setUpLeaves(
