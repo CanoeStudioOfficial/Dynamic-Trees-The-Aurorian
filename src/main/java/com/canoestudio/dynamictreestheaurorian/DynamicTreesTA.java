@@ -29,49 +29,6 @@ public class DynamicTreesTA {
     @Mod.Instance
     public static DynamicTreesTA instance;
 
-    @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
-        LOGGER.info("Dynamic Trees The Aurorian - PreInit");
-    }
-
-    @Mod.EventHandler
-    public void init(FMLInitializationEvent event) {
-        LOGGER.info("Dynamic Trees The Aurorian - Init");
-        proxy.init();
-    }
-
-    @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
-        LOGGER.info("Dynamic Trees The Aurorian - PostInit");
-
-        if (WorldGenRegistry.isWorldGenEnabled()) {
-            disableAurorianVanillaTreeGen();
-        }
-    }
-
-    private void disableAurorianVanillaTreeGen() {
-        try {
-            Class<?> configClass = Class.forName("com.shiroroku.theaurorian.Config");
-            try {
-                java.lang.reflect.Field silentwoodField = configClass.getDeclaredField("generateSilentwood");
-                silentwoodField.setAccessible(true);
-                silentwoodField.setBoolean(null, false);
-            } catch (NoSuchFieldException ignored) {
-            }
-
-            try {
-                java.lang.reflect.Field weepingwillowField = configClass.getDeclaredField("generateWeepingWillow");
-                weepingwillowField.setAccessible(true);
-                weepingwillowField.setBoolean(null, false);
-            } catch (NoSuchFieldException ignored) {
-            }
-
-            LOGGER.info("Disabled The Aurorian vanilla tree generation in favor of Dynamic Trees");
-        } catch (ClassNotFoundException e) {
-            LOGGER.warn("Could not find The Aurorian Config class. Vanilla tree generation may produce duplicates.");
-        } catch (Exception e) {
-            LOGGER.warn("Could not disable The Aurorian vanilla tree generation. This may result in duplicate trees. Error: {}", e.getMessage());
-        }
-    }
+   
 
 }
