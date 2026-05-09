@@ -1,5 +1,6 @@
-package com.canoestudio.dynamictreestheaurorian;
+package com.canoestudio.dynamictreestheaurorian.proxy;
 
+import com.canoestudio.dynamictreestheaurorian.DynamicTreesTA;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;

@@ -1,5 +1,6 @@
 package com.canoestudio.dynamictreestheaurorian;
 
+import com.canoestudio.dynamictreestheaurorian.proxy.CommonProxy;
 import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -20,8 +21,8 @@ public class DynamicTreesTA {
     public static final Logger LOGGER = LogManager.getLogger(NAME);
 
     @SidedProxy(
-            clientSide = "com.canoestudio.dynamictreestheaurorian.ClientProxy",
-            serverSide = "com.canoestudio.dynamictreestheaurorian.CommonProxy"
+            clientSide = "com.canoestudio.dynamictreestheaurorian.proxy.ClientProxy",
+            serverSide = "com.canoestudio.dynamictreestheaurorian.proxy.CommonProxy"
     )
     public static CommonProxy proxy;
 
