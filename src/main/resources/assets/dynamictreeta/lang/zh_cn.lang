@@ -1,0 +1,11 @@
+item.dynamictreeta:silentwoodseed.name=寂静木种子
+item.dynamictreeta:weepingwillowseed.name=垂柳种子
+
+species.dynamictreeta:silentwood.name=寂静木
+species.dynamictreeta:weepingwillow.name=垂柳
+
+tile.dynamictreeta:silentwoodbranch.name=寂静木树干
+tile.dynamictreeta:weepingwillowbranch.name=垂柳树干
+
+tile.dynamictreeta:leaves0.name=寂静木树叶
+tile.dynamictreeta:leaves1.name=垂柳树叶
