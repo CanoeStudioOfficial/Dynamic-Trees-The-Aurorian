@@ -3,12 +3,10 @@ package com.canoestudio.dynamictreestheaurorian;
 import com.ferreusveritas.dynamictrees.ModConfigs;
 import com.ferreusveritas.dynamictrees.ModItems;
 import com.ferreusveritas.dynamictrees.ModRecipes;
-import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry.BiomeDataBasePopulatorRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
 import com.ferreusveritas.dynamictrees.items.DendroPotion.DendroPotionType;
@@ -207,16 +205,8 @@ public class ModContent {
             ModelHelper.regModel(tree.getCommonSpecies().getSeed());
             ModelHelper.regModel(tree);
         }
-        LeavesPaging.getLeavesMapForModId(DynamicTreesTA.MODID).forEach((key, leaves) -> {
-            ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
-            ModelHelper.regColorHandler(leaves, (state, worldIn, pos, tintIndex) -> {
-                Block block = state.getBlock();
-                if (TreeHelper.isLeaves(block)) {
-                    return ((BlockDynamicLeaves) block).getProperties(state).foliageColorMultiplier(state, worldIn, pos);
-                }
-                return 0x00FF00FF;
-            });
-        });
+        LeavesPaging.getLeavesMapForModId(DynamicTreesTA.MODID).forEach((key, leaves) ->
+                ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build()));
     }
 
 }

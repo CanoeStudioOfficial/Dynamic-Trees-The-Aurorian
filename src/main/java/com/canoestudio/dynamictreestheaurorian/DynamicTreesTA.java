@@ -3,6 +3,7 @@ package com.canoestudio.dynamictreestheaurorian;
 import com.ferreusveritas.dynamictrees.ModConstants;
 import com.ferreusveritas.dynamictrees.api.WorldGenRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -18,6 +19,12 @@ public class DynamicTreesTA {
 
     public static final Logger LOGGER = LogManager.getLogger(NAME);
 
+    @SidedProxy(
+            clientSide = "com.canoestudio.dynamictreestheaurorian.ClientProxy",
+            serverSide = "com.canoestudio.dynamictreestheaurorian.CommonProxy"
+    )
+    public static CommonProxy proxy;
+
     @Mod.Instance
     public static DynamicTreesTA instance;
 
@@ -29,6 +36,7 @@ public class DynamicTreesTA {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         LOGGER.info("Dynamic Trees The Aurorian - Init");
+        proxy.init();
     }
 
     @Mod.EventHandler
